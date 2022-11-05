@@ -51,9 +51,12 @@ def decimal_to_octal(num):
             i += 1
     return '-' + remainder if negative else remainder
 def decimal_to_BCD(num):
+    negative = True if num < 0 else False
+    num = abs(num)
     num = f'{num}'
     result = ''
     for i in num:
         temp = decimal_to_binary(i)
         result += ((4 - len(temp)) * '0') + temp
-    return result
+    return result if negative == False else '-' + result
+print(decimal_to_BCD(-10))
